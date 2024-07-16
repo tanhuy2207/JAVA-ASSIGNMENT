@@ -1,7 +1,5 @@
 
-
-    
-    package view;
+package view;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,28 +7,29 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
-    public static String getString(String string){
-        System.out.print(string+" : ");
+    public static String getInputString(String prompt){
+        System.out.print(prompt + " : ");
         return new Scanner(System.in).nextLine();
     }
-//------------------------------------------------
-    public static LocalDate toLocalDate(String dob){
+
+    public static LocalDate convertToLocalDate(String dateString){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(dob, formatter);
+        return LocalDate.parse(dateString, formatter);
     }
-//------------------------------------------------
-    public static String toStringDate(LocalDate date){
+
+    public static String convertToStringDate(LocalDate date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return formatter.format(date);
-    
-}
-    
+    }
 
- public static void print(String title, List list){
-        System.out.println(title);
+    public static void printList(String header, List<?> itemList){
+        System.out.println(header);
         System.out.println("------------------------------");
-        for(Object o:list) System.out.println(o); 
+        for(Object item : itemList) {
+            System.out.println(item); 
+        }
         System.out.println("------------------------------");
-        System.out.println("Total :"+list.size());
+        System.out.println("Total :" + itemList.size());
     }
 }
+
